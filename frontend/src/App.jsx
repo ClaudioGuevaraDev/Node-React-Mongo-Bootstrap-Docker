@@ -24,7 +24,7 @@ const App = () => {
       <div className="container p-4">
         <div className="row">
           <div className="col-md-4">
-            <TaskForm />
+            <TaskForm setTasks={setTasks} tasks={tasks}/>
           </div>
           <div className="col-md-7">
             <TaskList tasks={tasks}/>
