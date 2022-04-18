@@ -10,7 +10,7 @@ const TaskForm = ({ setTasks, tasks }) => {
   const onSubmit = async (e) => {
     e.preventDefault();
 
-    const res = await axios.post("/api/tasks", task);
+    const res = await axios.post("http://localhost:4000/api/tasks", task);
 
     setTasks([...tasks, res.data]);
 

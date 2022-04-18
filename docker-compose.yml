@@ -1,19 +1,27 @@
 version: '3.8'
 
 services:
-  server:
-    container_name: backend
-    restart: always
-    build: ./backend
-    ports:
-      - 4000:4000
-    links:
-      - database
   database:
     container_name: db
     restart: always
     build: ./database
     ports:
-      - 27017:27017
+      - "27017:27017"
     logging:
       driver: none
+  server:
+    container_name: backend
+    restart: always
+    build: ./backend
+    ports:
+      - "4000:4000"
+    links:
+      - database
+  client:
+    container_name: frontend
+    restart: always
+    build: ./frontend-cra
+    ports:
+      - "3000:3000"
+    links:
+      - server
