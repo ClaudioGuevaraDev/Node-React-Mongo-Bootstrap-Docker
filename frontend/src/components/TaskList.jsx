@@ -1,4 +1,4 @@
-const TaskList = () => {
+const TaskList = ({ tasks }) => {
   return (
     <>
       <table className="table table-striped table-light table-hover text-dark text-center">
@@ -7,28 +7,18 @@ const TaskList = () => {
             <th>ID</th>
             <th>Title</th>
             <th>Price</th>
-            <th>Options</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>1</td>
-            <td>1</td>
-            <td>1</td>
-            <td>1</td>
-          </tr>
-          <tr>
-            <td>1</td>
-            <td>1</td>
-            <td>1</td>
-            <td>1</td>
-          </tr>
-          <tr>
-            <td>1</td>
-            <td>1</td>
-            <td>1</td>
-            <td>1</td>
-          </tr>
+          {tasks.map((t) => {
+            return (
+              <tr key={t._id}>
+                <td>{t._id}</td>
+                <td>{t.title}</td>
+                <td>{t.description}</td>
+              </tr>
+            );
+          })}
         </tbody>
       </table>
     </>

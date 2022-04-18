@@ -1,23 +1,38 @@
-import "bootstrap/dist/css/bootstrap.min.css"
+import axios from "axios";
+import { useEffect, useState } from "react";
 
-import TaskForm from "./components/TaskForm"
-import TaskList from "./components/TaskList"
+import "bootstrap/dist/css/bootstrap.min.css";
+
+import TaskForm from "./components/TaskForm";
+import TaskList from "./components/TaskList";
 
 const App = () => {
+  const [tasks, setTasks] = useState([])
+
+  const getTasks = async () => {
+    const res = await axios.get("/api/tasks");
+    setTasks(res.data)
+  };
+
+  useEffect(() => {
+    getTasks();
+  }, []);
+
+
   return (
     <div className="bg-dark min-vh-100">
       <div className="container p-4">
         <div className="row">
           <div className="col-md-4">
-            <TaskForm/>
+            <TaskForm />
           </div>
           <div className="col-md-7">
-            <TaskList/>
+            <TaskList tasks={tasks}/>
           </div>
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default App
+export default App;
