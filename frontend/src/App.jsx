@@ -5,13 +5,13 @@ import TaskList from "./components/TaskList"
 
 const App = () => {
   return (
-    <div className="bg-dark min-vh-100 text-white">
+    <div className="bg-dark min-vh-100">
       <div className="container p-4">
         <div className="row">
-          <div className="col-md-3">
+          <div className="col-md-4">
             <TaskForm/>
           </div>
-          <div className="col-md-5">
+          <div className="col-md-7">
             <TaskList/>
           </div>
         </div>
